@@ -7,34 +7,229 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/outputs.h>
+
+#define QWERTY  0
+#define NAVIGATOR	1
+#define SELECTOR 2
+#define SYMBOLS 3
+#define NUMBERS 4
+#define FNUMBERS 5
+#define WARRANGE 6
+
+
+
 / {
-    keymap {
-        compatible = "zmk,keymap";
+	behaviors {
+	        hm: homerow_mods {
+	            compatible = "zmk,behavior-hold-tap";
+	            label = "HOMEROW_MODS";
+	            #binding-cells = <2>;
+	            tapping-term-ms = <200>;
+	            quick_tap_ms = <0>;
+	            flavor = "tap-preferred";
+	            bindings = <&mo>, <&kp>;
+	        };
+	        fmt: custom_layer_tap {
+	            compatible = "zmk,behavior-hold-tap";
+	            label = "FAST_MOD_TAP";
+	            #binding-cells = <2>;
+	            flavor = "tap-preferred";
+	            tapping-term-ms = <150>;
+	            quick_tap_ms = <0>;
+	            bindings = <&kp>, <&kp>;
+	        };
+	    };
+		
+	keymap {
+		compatible = "zmk,keymap";
 
-        default_layer {
-            // ---------------------------------------------------------------------------------------------------------------------------------
-            // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
-            // |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
-            // | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
-            //                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
 
-            bindings = <
-                     &kp ESC   &kp Q   &kp W                          &kp E            &kp R                      &kp T                                                     &kp Y                 &kp U                            &kp I    &kp O     &kp P                  &kp BACKSPACE
-                &kp CAPSLOCK   &kp A   &kp S                          &kp D            &kp F                      &kp G                                                     &kp H                 &kp J                            &kp K    &kp L  &kp SEMI                        &kp SQT
- &mt LEFT_SHIFT LEFT_BRACKET   &kp Z   &kp X                          &kp C            &kp V                      &kp B  &kp LSHFT  &kp LSHFT  &kp LSHFT  &kp LSHFT         &kp N                 &kp M                        &kp COMMA  &kp DOT  &kp FSLH  &mt RIGHT_SHIFT RIGHT_BRACKET
-                                              &mt LEFT_GUI LEFT_PARENTHESIS  &mt LALT LC(UP)  &mt LEFT_CONTROL LC(DOWN)    &kp TAB  &kp SPACE  &kp SPACE  &kp ENTER  &kp QUESTION  &mt RIGHT_ALT DELETE  &mt RIGHT_GUI RIGHT_PARENTHESIS
-            >;
+		qwerty_layer {
+/*
+ *
+ * Base Layer: QWERTY
+ *
+ * ,-------------------------------------------.                              ,-------------------------------------------.
+ * |ALT/ESC |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |ALT/+   |
+ * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * |GUI/GRAV|A/NAV |S/SEL | D/NUM|   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |RGUI/' "|
+ * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * | LShift |   Z  |   X  |   C  |   V  |   B  | [ {  | CAPS |  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
+ * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'	
+ *                        |MISION| ShApp| DEL  | Space| TAB  |  | Bksp | ENTER|  ?   |   -  | CAPS |
+ *                        |WARRAN| LCTR |      |      |      |  |      |      | SYM  | RCTR |      |
+ *                        `----------------------------------'  `----------------------------------'
+ */
+			bindings = <
+     &fmt LALT ESC    &kp Q   &kp W   &kp E        &kp R          &kp T                                              &kp Y       &kp U           &kp I     &kp O   &kp P     &fmt LALT KP_PLUS
+     &fmt LGUI GRAVE  &hm 1 A &hm 2 S &hm 4 D      &kp F          &kp G                                              &kp H       &kp J           &kp K     &kp L   &kp SEMI  &fmt RGUI SQT
+     &fmt LSHIFT LPAR &kp Z   &kp X   &kp C        &kp V          &kp B   &kp LBKT &kp CAPS      &mo 5    &kp RBKT   &kp N       &kp M           &kp COMMA &kp DOT &kp SLASH &fmt RSHIFT RPAR
+                                      &hm 6 LC(UP) &mt LCTRL LC(DOWN) &kp DEL &kp SPACE &kp TAB      &kp BSPC &kp ENTER  &hm 3 QMARK &mt RCTRL MINUS &kp CAPS
+			>;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+		};
+		
+		navigator_layer {
+/*
+ * Nav Layer: Media, navigation
+ *
+ * ,-------------------------------------------.                              ,-------------------------------------------.
+ * |        |      |      |      |      |      |                              | PgUp | Alt← |   ↑  | Alt→ | Home |        |
+ * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * |        |   x  |      |      |      |Bullet|                              | PgDn |  ←   |   ↓  |   →  | End  |        |
+ * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |NList |      |VolUp |  |      |Pause |      | Gui← |      | Gui→ |      |        |
+ * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+ *                        |Ind L |Ind R |MicMut|VolMut|VolDn |  |M Prev|M Play|M Next|      |      |
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        `----------------------------------'  `----------------------------------'
+ */
+			bindings = <
+      &trans &trans &trans &trans       &trans       &trans                                                          &kp PG_UP  &kp LA(LEFT) &kp UP   &kp LA(RIGHT) &kp HOME &trans
+      &trans &trans &trans &trans       &trans       &kp LG(LS(N8))                                                  &kp PG_DN  &kp LEFT     &kp DOWN &kp RIGHT     &kp END  &trans
+      &trans &trans &trans &trans       &trans       &kp LG(LS(N7)) &trans     &kp C_VOL_UP    &trans     &kp C_STOP &trans     &kp LG(LEFT) &trans   &kp LG(RIGHT) &trans   &trans
+                           &kp LG(LBKT) &kp LG(RBKT) &kp LG(LC(M))  &kp C_MUTE &kp C_VOL_DN    &kp C_PREV &kp C_PP   &kp C_NEXT &trans       &trans 
+			>;
 
-        Layer__1 {
-            bindings = <
- &trans  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT                                  &kp CARET  &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans
- &trans           &kp F1       &kp F2    &kp F3      &kp F4       &kp F5                                     &kp F6         &kp F7        &kp F8                &kp F9                &kp F10  &trans
- &trans           &trans       &trans    &trans      &trans       &trans  &trans  &trans  &trans  &trans     &trans         &trans        &trans                &trans                 &trans  &trans
-                                         &trans      &trans       &trans  &trans  &trans  &trans  &trans     &trans         &trans        &trans
-            >;
-        };
-    };
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+		};
+
+		selector_layer {
+/*
+ * Nav Layer: Select, copy/paste  ALL of right side is Shift+
+ *
+ * ,-------------------------------------------.                              ,-------------------------------------------.
+ * |        |      |      |      |      |SEnter|                              | PgUp | Alt← |   ↑  | Alt→ | Home |        |
+ * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * | CAPS   |      |   x  |      |      |Enter |                              | PgDn |  ←   |   ↓  |   →  | End  |        |
+ * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |GEnter| Cut  |PstClr|  |      |      |      | Gui← |      | Gui→ |      |        |
+ * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+ *                        | Undo | Redo |Linki |Copy  | Paste|  |      |      |      |      |      |
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        `----------------------------------'  `----------------------------------'
+ */
+			bindings = <
+      &trans   &trans &trans &trans    &trans    &kp LS(ENTER)                                            &kp LS(PG_UP) &kp LS(LA(LEFT)) &kp LS(UP)   &kp LS(LA(RIGHT)) &kp LS(HOME) &trans
+      &kp CAPS &trans &trans &trans    &trans    &kp ENTER                                                &kp LS(PG_DN) &kp LS(LEFT)     &kp LS(DOWN) &kp LS(RIGHT)     &kp LS(END)  &trans
+      &trans   &trans &trans &trans    &trans    &kp LG(ENTER)     &kp LG(X) &kp LG(LS(V))  &trans &trans &trans        &kp LG(LEFT)     &trans       &kp LG(RIGHT)     &trans       &trans
+                             &kp LG(Z) &kp LG(Y) &kp LG(LC(ENTER)) &kp LG(C) &kp LG(V)      &trans &trans &trans        &trans           &trans 
+			>;
+
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+		};
+		
+
+		symbols_layer {
+/*
+ * Sym Layer: Numbers and symbols
+ *
+ * ,-------------------------------------------.                              ,-------------------------------------------.
+ * |    `   |  1   |  2   |  3   |  4   |  5   |                              |   6  |  7   |  8   |  9   |  0   |   =    |
+ * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * |    ~   |  !   |  @   |  #   |  $   |  %   |                              |   ^  |  &   |  *   |  (   |  )   |   +    |
+ * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |    |   |   \  |  :   |  ;   |  -   |  [   |  {   |      |  |   ↑  |   }  |   ]  |  _   |  ,   |  .   |  /   |   ?    |
+ * `----------------------+------+-------------+------+------|  |------+------+------+------+------+----------------------'
+ *                        |      |      |      |      |      |  |   ↓  |      |   x  |  ←   |  →   |
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        `----------------------------------'  `----------------------------------'
+ */
+			bindings = <
+     &kp GRAVE &kp N1   &kp N2    &kp N3   &kp N4    &kp N5                                        &kp N6    &kp N7    &kp N8     &kp N9   &kp N0   &kp EQUAL
+     &kp TILDE &kp EXCL &kp AT    &kp HASH &kp DLLR  &kp PRCNT                                     &kp CARET &kp AMPS  &kp ASTRK  &kp LPAR &kp RPAR &kp PLUS
+     &kp PIPE  &kp BSLH &kp COLON &kp SEMI &kp MINUS &kp LBKT &kp LBRC &trans    &kp UP   &kp RBRC &kp RBKT  &kp UNDER &kp COMMA  &kp DOT  &kp FSLH &kp QMARK
+                                  &trans   &trans    &trans   &trans   &trans    &kp DOWN &trans   &trans    &kp LEFT  &kp RIGHT
+			>;
+
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+		};
+		
+
+		numbers_layer {
+/*
+ * NUM Layer: Numbers and symbols
+ *
+ * ,-------------------------------------------.                              ,-------------------------------------------.
+ * |        |      |      |      |      |      |                              |   +  |  7   |  8   |  9   |  *   |        |
+ * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * | CAPS   |      |      |   x  |      |      |                              |   =  |  4   |  5   |  6   |  =   |        |
+ * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |      |  |      |      |   -  |  1   |  2   |  3   |  /   |        |
+ * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+ *                        |Access|Smiley|Thumb | ACopy|APaste|  |      |      |  0   |  .   |  .   |
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        `----------------------------------'  `----------------------------------'
+ */
+			bindings = <
+     &none    &none &none &none                 &none                 &none                                                                              &kp KP_PLUS  &kp KP_N7   &kp KP_N8  &kp KP_N9 &kp KP_ASTERISK  &trans
+     &kp CAPS &none &none &none                 &none                 &none                                                                              &kp KP_EQUAL &kp KP_N4   &kp KP_N5  &kp KP_N6 &kp KP_EQUAL     &trans
+     &none    &none &none &none                 &none                 &none                 &trans                &trans                   &trans &trans &kp KP_MINUS &kp KP_N1   &kp KP_N2  &kp KP_N3 &kp KP_SLASH     &trans
+                          &kp LG(LC(LA(LS(A)))) &kp LG(LC(LA(LS(B)))) &kp LG(LC(LA(LS(C)))) &kp LG(LC(LA(LS(O)))) &kp LG(LC(LA(LS(P))))    &trans &trans &kp KP_N0    &kp KP_DOT  &kp KP_DOT
+			>;
+
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+		};
+
+		fnumbers_layer {
+/*
+ * Function Layer: Function keys
+ *
+ * ,-------------------------------------------.                              ,-------------------------------------------.
+ * | TOBLE  |  F1  | F2   | F3   | F4   | F5   |                              |  F6  | F7   | F8   | F9   | F10  | F11    |
+ * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * | TOUSB  | BT0  | BT1  | BT2  | BT3  |      |                              |      |      |      |      |      | F12    |
+ * +--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |      |  |   X  |      |      |      |      |      |      | CLR BT |
+ * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        `----------------------------------'  `----------------------------------'
+ */
+			bindings = <
+      &out OUT_BLE    &kp F1       &kp F2       &kp F3       &kp F4        &kp F5                                  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11
+      &out OUT_USB    &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3  &trans                                  &trans &trans &trans &trans &trans  &kp F12
+      &trans          &trans       &trans       &trans       &trans        &trans &trans &trans    &trans  &trans  &trans &trans &trans &trans &trans  &bt BT_CLR 
+                                                &trans       &trans        &trans &trans &trans    &trans  &trans  &trans &trans &trans 
+			>;
+
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+		};
+		
+		
+		warrange_layer {
+/*
+ * Window Layer: Key shortcuts to manage rectangle
+ *
+ * ,-------------------------------------------.                              ,-------------------------------------------.
+ * |  SLEEP |      |      |      |      |   ↑  |                              |      | CW<  |AWUP  | >CW  |      |        |
+ * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * |        |      |      |      |      |   ↓  |                              |      | AW<  | ACW F| >AW  |      |        |
+ * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |  ←   |   →  |  |      |      |      | CWS< |AWDWN | >CWS |      |        |
+ * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+ *                        |   X  |      |      |REOPEN|CLTAB |  | ACW< | ACW> |      | C<   | C>   |
+ *                        |      |      |      | TAB  |      |  |      |      |      |      |      |
+ *                        `----------------------------------'  `----------------------------------'
+ */
+			bindings = <
+      &kp LC(LS(LA(LG(F12)))) &trans &trans &trans &trans &kp UP                                                                         &trans &kp LC(LG(LEFT))     &kp LA(LG(UP))    &kp LC(LG(RIGHT))     &trans &trans 
+      &trans                  &trans &trans &trans &trans &kp DOWN                                                                       &trans &kp LA(LG(LEFT))     &kp LA(LC(LG(F))) &kp LA(LG(RIGHT))     &trans &trans 
+      &trans                  &trans &trans &trans &trans &trans   &kp LEFT      &kp RIGHT    &kp LC(LEFT)         &kp LC(RIGHT)         &trans &kp LS(LC(LG(LEFT))) &kp LA(LG(DOWN))  &kp LS(LC(LG(RIGHT))) &trans &trans 
+                                            &trans &trans &trans   &kp LG(LS(T)) &kp LG(W)    &kp LA(LC(LG(LEFT))) &kp LA(LC(LG(RIGHT))) &trans &kp LC(LEFT)         &kp LC(RIGHT) 
+			>;
+
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+		};
+	
+		
+		
+		
+		
+		
+	};
 };
