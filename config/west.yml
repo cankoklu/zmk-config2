@@ -7,7 +7,7 @@ manifest:
   projects:
     - name: zmk
       remote: infused-kim
-      revision: split-encoder
+      revision: my-changes/split-encoder
       import: app/west.yml
   self:
     path: config
