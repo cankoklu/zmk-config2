@@ -70,7 +70,7 @@
                                       &hm 6 LC(UP) &mt LCTRL LC(DOWN) &kp DEL &kp SPACE &kp TAB      &kp BSPC &kp ENTER  &hm 3 QMARK &mt RCTRL MINUS &kp CAPS
 			>;
 
-			sensor-bindings = <&inc_dec_kp PAGE_DOWN PAGE_UP>;
+			sensor-bindings = <&inc_dec_kp PG_DOWN PG_UP>;
 		};
 		
 		navigator_layer {
@@ -197,7 +197,7 @@
                                                 &trans       &trans        &trans &trans &trans    &trans  &trans  &trans &trans &trans 
 			>;
 
-			sensor-bindings = <&inc_dec_kp &kp DOWN  &kp UP>;
+			sensor-bindings = <&inc_dec_kp DOWN UP>;
 		};
 		
 		
