@@ -69,9 +69,8 @@
      &fmt LSHIFT LPAR &kp Z   &kp X   &kp C        &kp V          &kp B   &kp LBKT &kp CAPS      &mo 5    &kp RBKT   &kp N       &kp M           &kp COMMA &kp DOT &kp SLASH &fmt RSHIFT RPAR
                                       &hm 6 LC(UP) &mt LCTRL LC(DOWN) &kp DEL &kp SPACE &kp TAB      &kp BSPC &kp ENTER  &hm 3 QMARK &mt RCTRL MINUS &kp CAPS
 			>;
-sensor-bindings = <&inc_dec_cp C_VOL_DN C_VOL_UP &inc_dec_cp C_BRI_DN C_BRI_UP>;
-sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp LC(LEFT) LC(RIGHT)>;
-/*			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>; */
+
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
 		};
 		
 		navigator_layer {
