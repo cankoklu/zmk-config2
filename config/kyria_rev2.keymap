@@ -116,7 +116,7 @@
 			bindings = <
       &trans   &trans &trans &trans    &trans    &kp LS(ENTER)                                            &kp LS(PG_UP) &kp LS(LA(LEFT)) &kp LS(UP)   &kp LS(LA(RIGHT)) &kp LS(HOME) &trans
       &trans   &trans &trans &trans    &trans    &kp ENTER                                                &kp LS(PG_DN) &kp LS(LEFT)     &kp LS(DOWN) &kp LS(RIGHT)     &kp LS(END)  &trans
-      &trans   &trans &trans &trans    &trans    &kp LG(ENTER)     &kp LG(X) &kp LG(LS(V))  &trans &trans &trans        &kp LS(LG(LEFT))     &trans       &kp LS(LG(RIGHT))     &trans       &trans
+      &trans   &trans &trans &trans    &trans    &kp LG(ENTER)     &kp LG(X) &kp LG(LS(V))  &trans &trans &trans        &kp LS(LG(LEFT)) &trans       &kp LS(LG(RIGHT)) &trans       &trans
                              &kp LG(Z) &kp LG(Y) &kp LG(LC(ENTER)) &kp LG(C) &kp LG(V)      &trans &trans &trans        &trans           &trans 
 			>;
 
@@ -217,10 +217,10 @@
  *                        `----------------------------------'  `----------------------------------'
  */
 			bindings = <
-      &kp LC(LS(LA(LG(F12)))) &trans &trans &trans &trans &kp UP                                                                         &kp LC(LA(KP_PLUS)) &kp LC(LA(U))     &kp LC(LA(UP))    &kp LC(LA(I))     &trans &trans 
-      &trans                  &trans &trans &trans &trans &kp DOWN                                                                       &trans &kp LC(LA(LEFT))     &kp LC(LA(ENTER)) &kp LC(LA(RIGHT))     &trans &trans 
-      &trans                  &trans &trans &trans &trans &trans   &kp LEFT      &kp RIGHT    &kp LC(LEFT)         &kp LC(RIGHT)         &kp LC(LA(KP_MINUS)) &kp LC(LA(J))) &kp LC(LA(DOWN))  &kp LC(LA(K))) &trans &trans 
-                                            &trans &trans &trans   &kp LG(LS(T)) &kp LG(W)    &kp LA(LC(LG(LEFT))) &kp LA(LC(LG(RIGHT))) &trans &kp LC(LEFT)         &kp LC(RIGHT) 
+      &kp LC(LS(LA(LG(F12)))) &trans &trans &trans &trans &kp UP                                                                         &kp LC(LA(KP_PLUS))  &kp LC(LA(U))     &kp LC(LA(UP))    &kp LC(LA(I))     &trans &trans 
+      &trans                  &trans &trans &trans &trans &kp DOWN                                                                       &trans               &kp LC(LA(LEFT))  &kp LC(LA(ENTER)) &kp LC(LA(RIGHT)) &trans &trans 
+      &trans                  &trans &trans &trans &trans &trans   &kp LEFT      &kp RIGHT    &kp LC(LEFT)         &kp LC(RIGHT)         &kp LC(LA(KP_MINUS)) &kp LC(LA(J)))    &kp LC(LA(DOWN))  &kp LC(LA(K))    &trans &trans 
+                                            &trans &trans &trans   &kp LG(LS(T)) &kp LG(W)    &kp LA(LC(LG(LEFT))) &kp LA(LC(LG(RIGHT))) &trans               &kp LC(LEFT)      &kp LC(RIGHT) 
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN>;
