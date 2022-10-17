@@ -22,6 +22,20 @@
 
 
 / {
+	combos {
+        compatible = "zmk,combos";
+        obs_up {
+            timeout-ms = <50>;
+            key-positions = <7 8>;
+            bindings = <&kp LS(LA(LC(X)))>;
+        };
+        obs_down {
+            timeout-ms = <50>;
+            key-positions = <8 9>;
+            bindings = <&kp LS(LA(LC(Z)))>;
+        };
+    };
+	
 	behaviors {
 	        hm: homerow_mods {
 	            compatible = "zmk,behavior-hold-tap";
