@@ -23,33 +23,33 @@
 
 / {
 	combos {
-        compatible = "zmk,combos";
-        obs_up {
-            timeout-ms = <50>;
-            key-positions = <0 1>;
-            bindings = <&kp A>;
-        };
-        obs_down {
-            timeout-ms = <50>;
-            key-positions = <10 11>;
-            bindings = <&kp B>;
-        };
-        obs_foldall {
-            timeout-ms = <50>;
-            key-positions = <20 21>;
-            bindings = <&kp C>;
-        };
-        obs_fold {
-            timeout-ms = <50>;
-            key-positions = <30 31>;
-            bindings = <&kp D>;
-        };
-        obs_unfold {
-            timeout-ms = <50>;
-            key-positions = <40 41>;
-            bindings = <&kp E>;
-        };
-    };
+	    compatible = "zmk,combos";
+	    obs_up {
+	        timeout-ms = <50>;
+	        key-positions = <7 8>;
+	        bindings = <&kp LS(LA(LC(X)))>;
+	    };
+	    obs_down {
+	        timeout-ms = <50>;
+	        key-positions = <35 36>;
+	        bindings = <&kp LS(LA(LC(Z)))>;
+	    };
+	    obs_foldall {
+	        timeout-ms = <50>;
+	        key-positions = <45 18>;
+	        bindings = <&kp LS(LG(8))>;
+	    };
+	    obs_fold {
+	        timeout-ms = <50>;
+	        key-positions = <45 20>;
+	        bindings = <&kp LS(LG(9))>;
+	    };
+	    obs_unfold {
+	        timeout-ms = <50>;
+	        key-positions = <45 19>;
+	        bindings = <&kp LS(LG(7))>;
+	    };
+	};
 	
 	behaviors {
 	        hm: homerow_mods {
@@ -83,9 +83,9 @@
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |12      |A/NAV |S/SEL | D/NUM|F/Warr|   G  |                              |  18  |   J  |   K  |   L  | ;  : |RGUI/' "|
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | 19     |   Z  |   X  |   C  |   V  |   B  | [ {  | CAPS |  |27.   |  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
+ * | 24     |   Z  |   X  |   C  |   V  |   B  | [ {  | 31   |  |32.   |  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'	
- *                        |35    |MisCtr| DEL  | Space| TAB  |  | 40   | ENTER|  ?   |   -  |F-keys|
+ *                        |40    |MisCtr| DEL  | Space| TAB  |  | 45   | ENTER|  ?   |   -  |F-keys|
  *                        |      | LCTR |      |      |      |  |      |      | SYM  | RCTR |      |
  *                        `----------------------------------'  `----------------------------------'
  */
