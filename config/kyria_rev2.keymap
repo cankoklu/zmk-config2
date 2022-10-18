@@ -26,27 +26,27 @@
         compatible = "zmk,combos";
         obs_up {
             timeout-ms = <50>;
-            key-positions = <7 8>;
+            key-positions = <0 1>;
             bindings = <&kp LS(LA(LC(X)))>;
         };
         obs_down {
             timeout-ms = <50>;
-            key-positions = <8 9>;
+            key-positions = <10 11>;
             bindings = <&kp LS(LA(LC(Z)))>;
         };
         obs_foldall {
             timeout-ms = <50>;
-            key-positions = <41 18>;
+            key-positions = <20 21>;
             bindings = <&kp LS(LG(8))>;
         };
         obs_fold {
             timeout-ms = <50>;
-            key-positions = <41 20>;
+            key-positions = <30 31>;
             bindings = <&kp LS(LG(9))>;
         };
         obs_unfold {
             timeout-ms = <50>;
-            key-positions = <41 19>;
+            key-positions = <40 41>;
             bindings = <&kp LS(LG(7))>;
         };
     };
