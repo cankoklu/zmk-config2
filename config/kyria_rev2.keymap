@@ -37,17 +37,17 @@
 	    obs_foldall {
 	        timeout-ms = <50>;
 	        key-positions = <45 18>;
-	        bindings = <&kp LS(LG(8))>;
+	        bindings = <&kp LS(LG(N8))>;
 	    };
 	    obs_fold {
 	        timeout-ms = <50>;
 	        key-positions = <45 20>;
-	        bindings = <&kp LS(LG(9))>;
+	        bindings = <&kp LS(LG(N9))>;
 	    };
 	    obs_unfold {
 	        timeout-ms = <50>;
 	        key-positions = <45 19>;
-	        bindings = <&kp LS(LG(7))>;
+	        bindings = <&kp LS(LG(N7))>;
 	    };
 	};
 	
