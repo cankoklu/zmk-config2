@@ -27,27 +27,27 @@
         obs_up {
             timeout-ms = <50>;
             key-positions = <0 1>;
-            bindings = <&kp LS(LA(LC(X)))>;
+            bindings = <&kp A>;
         };
         obs_down {
             timeout-ms = <50>;
             key-positions = <10 11>;
-            bindings = <&kp LS(LA(LC(Z)))>;
+            bindings = <&kp B>;
         };
         obs_foldall {
             timeout-ms = <50>;
             key-positions = <20 21>;
-            bindings = <&kp LS(LG(8))>;
+            bindings = <&kp C>;
         };
         obs_fold {
             timeout-ms = <50>;
             key-positions = <30 31>;
-            bindings = <&kp LS(LG(9))>;
+            bindings = <&kp D>;
         };
         obs_unfold {
             timeout-ms = <50>;
             key-positions = <40 41>;
-            bindings = <&kp LS(LG(7))>;
+            bindings = <&kp E>;
         };
     };
 	
