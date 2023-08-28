@@ -113,7 +113,7 @@
                                       &kp C_MUTE &mt LCTRL LC(UP)   &kp DEL &kp SPACE &kp TAB      &kp BSPC &kp ENTER  &hm 3 QMARK &mt RCTRL MINUS &mo 5
 			>;
 
-			sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp PG_UP PG_DN>;
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp DOWN UP>;
 		};
 		
 		navigator_layer {
