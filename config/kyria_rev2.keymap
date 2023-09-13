@@ -19,7 +19,8 @@
 #define FNUMBERS 5
 #define WARRANGE 6
 
-
+&left_encoder { resolution = <2>; };
+&right_encoder { resolution = <2>; };
 
 / {
 	combos {
