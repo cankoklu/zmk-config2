@@ -266,9 +266,9 @@
  *                        `----------------------------------'  `----------------------------------'
  */
 			bindings = <
-      &kp LC(LS(LA(LG(F12)))) &trans &trans &trans &trans &kp UP                                                                         &kp LG(LC(LA(LS(R))))  &kp LC(LA(U))     &kp LG(LC(LA(LS(Y)))    &kp LC(LA(I))     &kp LG(LC(LA(LS(U))) &kp LC(LA(UP)) 
+      &kp LC(LS(LA(LG(F12)))) &trans &trans &trans &trans &kp UP                                                                         &kp LG(LC(LA(LS(R))))  &kp LC(LA(U))     &kp LG(LC(LA(LS(Y)))    &kp LC(LA(I))     &kp LG(LC(LA(LS(U)))) &kp LC(LA(UP)) 
       &trans                  &trans &trans &trans &trans &kp DOWN                                                                       &trans                 &kp LC(LA(LEFT))  &kp LC(LA(ENTER)) &kp LC(LA(RIGHT)) &trans &trans 
-      &trans                  &trans &trans &trans &trans &trans   &kp LEFT      &kp RIGHT    &kp LC(LEFT)         &kp LC(RIGHT)         &kp LG(LC(LA(LS(I))))  &kp LC(LA(J))     &kp LG(LC(LA(LS(D)))  &kp LC(LA(K))     &kp LG(LC(LA(LS(F))) &kp LC(LA(DOWN))
+      &trans                  &trans &trans &trans &trans &trans   &kp LEFT      &kp RIGHT    &kp LC(LEFT)         &kp LC(RIGHT)         &kp LG(LC(LA(LS(I))))  &kp LC(LA(J))     &kp LG(LC(LA(LS(D)))  &kp LC(LA(K))     &kp LG(LC(LA(LS(F)))) &kp LC(LA(DOWN))
                                             &trans &trans &trans   &kp LG(LS(T)) &kp LG(W)    &kp LA(LC(LG(LEFT))) &kp LA(LC(LG(RIGHT))) &trans                 &kp LC(LEFT)      &kp LC(RIGHT) 
 			>;
 
