@@ -255,21 +255,21 @@
  * Window Layer: Key shortcuts to manage rectangle
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  SLEEP |      |      |      |      |   ↑  |                              |      | CA U |CAUP  | CA I |      |        |
+ * |  SLEEP |      |      |      |      |   ↑  |                              |  TL6 | CA U | TC6  | CA I | TR6  |   CAU  |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |        |      |      |      |   X  |   ↓  |                              |      | CA < | CAEnt| > CA |      |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |  ←   |   →  |  |      |      |      | CA J |CADWN | CA K |      |        |
+ * |        |      |      |      |      |      |  ←   |   →  |  |      |      |  BL6 | CA J |  BC6 | CA K | BL6  |   CAB  |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |REOPEN|CLTAB |  | ACW< | ACW> |      | C<   | C>   |
  *                        |      |      |      | TAB  |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
 			bindings = <
-      &kp LC(LS(LA(LG(F12)))) &trans &trans &trans &trans &kp UP                                                                         &trans  &kp LC(LA(U))     &kp LC(LA(UP))    &kp LC(LA(I))     &trans &trans 
-      &trans                  &trans &trans &trans &trans &kp DOWN                                                                       &trans  &kp LC(LA(LEFT))  &kp LC(LA(ENTER)) &kp LC(LA(RIGHT)) &trans &trans 
-      &trans                  &trans &trans &trans &trans &trans   &kp LEFT      &kp RIGHT    &kp LC(LEFT)         &kp LC(RIGHT)         &trans  &kp LC(LA(J))     &kp LC(LA(DOWN))  &kp LC(LA(K))     &trans &trans 
-                                            &trans &trans &trans   &kp LG(LS(T)) &kp LG(W)    &kp LA(LC(LG(LEFT))) &kp LA(LC(LG(RIGHT))) &trans  &kp LC(LEFT)      &kp LC(RIGHT) 
+      &kp LC(LS(LA(LG(F12)))) &trans &trans &trans &trans &kp UP                                                                         &kp LG(LC(LA(LS(R))))  &kp LC(LA(U))     &kp LG(LC(LA(LS(Y)))    &kp LC(LA(I))     &kp LG(LC(LA(LS(U))) &kp LC(LA(UP)) 
+      &trans                  &trans &trans &trans &trans &kp DOWN                                                                       &trans                 &kp LC(LA(LEFT))  &kp LC(LA(ENTER)) &kp LC(LA(RIGHT)) &trans &trans 
+      &trans                  &trans &trans &trans &trans &trans   &kp LEFT      &kp RIGHT    &kp LC(LEFT)         &kp LC(RIGHT)         &kp LG(LC(LA(LS(I))))  &kp LC(LA(J))     &kp LG(LC(LA(LS(D)))  &kp LC(LA(K))     &kp LG(LC(LA(LS(F))) &kp LC(LA(DOWN))
+                                            &trans &trans &trans   &kp LG(LS(T)) &kp LG(W)    &kp LA(LC(LG(LEFT))) &kp LA(LC(LG(RIGHT))) &trans                 &kp LC(LEFT)      &kp LC(RIGHT) 
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
