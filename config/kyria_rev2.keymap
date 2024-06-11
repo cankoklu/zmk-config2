@@ -215,10 +215,10 @@
  *                        `----------------------------------'  `----------------------------------'
  */
 			bindings = <
-     &none     &none &none &none                 &none                 &none                                                                              &kp KP_PLUS  &kp KP_N7   &kp KP_N8  &kp KP_N9 &kp KP_ASTERISK &trans
-     &none     &none &none &none                 &none                 &none                                                                              &kp KP_EQUAL &kp KP_N4   &kp KP_N5  &kp KP_N6 &kp KP_EQUAL    &trans
-     &kp LBKT  &none &none &none                 &none                 &none                 &trans                &trans                   &trans &trans &kp KP_MINUS &kp KP_N1   &kp KP_N2  &kp KP_N3 &kp KP_SLASH    &kp RBKT
-                           &kp LG(LC(LA(LS(A)))) &kp LG(LC(LA(LS(B)))) &kp LG(LC(LA(LS(C)))) &kp LG(LC(LA(LS(O)))) &kp LG(LC(LA(LS(P))))    &trans &trans &kp KP_N0    &kp KP_DOT  &kp KP_DOT
+     &out OUT_BLE &none &none &none                 &none                 &none                                                                              &kp KP_PLUS  &kp KP_N7   &kp KP_N8  &kp KP_N9 &kp KP_ASTERISK &trans
+     &none        &none &none &none                 &none                 &none                                                                              &kp KP_EQUAL &kp KP_N4   &kp KP_N5  &kp KP_N6 &kp KP_EQUAL    &trans
+     &kp LBKT     &none &none &none                 &none                 &none                 &trans                &trans                   &trans &trans &kp KP_MINUS &kp KP_N1   &kp KP_N2  &kp KP_N3 &kp KP_SLASH    &kp RBKT
+                              &kp LG(LC(LA(LS(A)))) &kp LG(LC(LA(LS(B)))) &kp LG(LC(LA(LS(C)))) &kp LG(LC(LA(LS(O)))) &kp LG(LC(LA(LS(P))))    &trans &trans &kp KP_N0    &kp KP_DOT  &kp KP_DOT
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
