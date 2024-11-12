@@ -55,6 +55,16 @@
 	        key-positions = <2 3 4>;
 	        bindings = <&kp N1>;
 	    };
+				hyper {
+	        timeout-ms = <50>;
+	        key-positions = <0 12 24>;
+	        bindings = <&kp LS(LA(LC(LGUI)))>;
+	    };
+				left_1 {
+	        timeout-ms = <50>;
+	        key-positions = <11 23 39>;
+	        bindings = <&kp LS(LA(LC(LGUI)))>;
+	    };
 	};
 	
 	behaviors {
