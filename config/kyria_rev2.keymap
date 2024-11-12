@@ -58,12 +58,12 @@
 				hyper {
 	        timeout-ms = <50>;
 	        key-positions = <0 12 24>;
-	        bindings = <&kp LS(LA(LC(LGUI)))>;
+	        bindings = <&mt LS(LA(LC(LGUI)))>;
 	    };
 				left_1 {
 	        timeout-ms = <50>;
 	        key-positions = <11 23 39>;
-	        bindings = <&kp LS(LA(LC(LGUI)))>;
+	        bindings = <&mt LS(LA(LC(LGUI)))>;
 	    };
 	};
 	
