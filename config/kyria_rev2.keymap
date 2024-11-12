@@ -55,12 +55,12 @@
 	        key-positions = <2 3 4>;
 	        bindings = <&kp N1>;
 	    };
-				hyper_l {
+		hyper_l {
 	        timeout-ms = <50>;
 	        key-positions = <0 12 24>;
 	        bindings = <&mt LS(LA(LC(LGUI)))>;
 	    };
-				hyper_r {
+		hyper_r {
 	        timeout-ms = <50>;
 	        key-positions = <11 23 39>;
 	        bindings = <&mt LS(LA(LC(LGUI)))>;
